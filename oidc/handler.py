@@ -6,7 +6,7 @@ logger = Logger()
 @logger.inject_lambda_context
 def hello(event, context):
     
-    logger.info("Collecting payment")
+    logger.info(event)
     body = {
         "message": "Go Serverless v1.0! Your function executed successfully!",
         "input": event
