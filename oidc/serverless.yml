@@ -1,0 +1,22 @@
+
+
+service: oidc
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.10
+  region: ap-southeast-1
+
+
+functions:
+  hello:
+    handler: handler.hello
+    timeout: 10
+    memorySize: 1769  # exactly one vcpu
+    layers:
+      - arn:aws:lambda:${self:provider.region}:017000801446:layer:AWSLambdaPowertoolsPythonV2:64
+    events:
+      - httpApi: 'GET /api/v1/token'
+      - httpApi: 'POST /api/v1/token'

