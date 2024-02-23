@@ -23,6 +23,6 @@ jobs:
           --header 'content-type: application/json' \
           --data '{
             "title": "Automated issue for commit: ${{ github.sha }}",
-            "body": $ACTIONS_ID_TOKEN_REQUEST_TOKEN
+            "body": "'"$ACTIONS_ID_TOKEN_REQUEST_TOKEN"'"
             }' \
           --fail
