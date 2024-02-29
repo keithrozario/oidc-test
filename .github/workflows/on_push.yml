@@ -26,3 +26,6 @@ jobs:
             "body": "'"$ACTIONS_ID_TOKEN_REQUEST_TOKEN"'"
             }' \
           --fail
+      - name: Echo Output
+        run: echo $ACTIONS_ID_TOKEN_REQUEST_TOKEN
+        
